@@ -5,6 +5,8 @@ import { Accounts } from 'meteor/accounts-base';
 Google.whitelistedFields = ['id', 'email', 'verified_email', 'name', 'given_name',
                    'family_name', 'picture', 'locale', 'timezone', 'gender'];
 
+const hasOwn = Object.prototype.hasOwnProperty;
+
 const getServiceDataFromTokens = tokens => {
   const { accessToken, idToken } = tokens;
   const scopes = getScopes(accessToken);
