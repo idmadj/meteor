@@ -626,6 +626,12 @@ export class AccountsClient extends AccountsCommon {
   
     // Try to match the saved value of window.location.hash.
     this._attemptToMatchHash();
+
+    // Listen to hashchange in case the location changes without a refresh
+    window.addEventListener("hashchange", (event) => {
+      this.savedHash = window.location.hash;
+      this._attemptToMatchHash();
+    });
   };
   
   // Separate out this functionality for testing
